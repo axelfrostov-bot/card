@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Лопаткин Валентин — EssilorLuxottica</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #ffffff;
+    --off:     #f4f5f7;
+    --ink:     #1a1a2e;
+    --gray:    #6b6b7b;
+    --lgray:   #c8c8d4;
+    --el-gray: #706f6f;
+    --el-blue: #003DA5;
+    --el-blue2:#0052cc;
+    --accent:  #003DA5;
+  }
+
+  html { height: 100%; }
+  body {
+    min-height: 100%;
+    background: var(--off);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px 48px;
+  }
+
+  /* ── LOGO ── */
+  .logo-wrap {
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: up 0.5s ease forwards;
+  }
+  .logo-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    user-select: none;
+  }
+  .logo-text .e  { color: var(--el-gray); }
+  .logo-text .l  { color: var(--el-blue); }
+  .logo-sub {
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lgray);
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  /* ── CARD ── */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--white);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 48px rgba(0,61,165,0.08);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: up 0.55s ease 0.1s forwards;
+  }
+
+  /* blue top bar */
+  .card-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--el-blue) 0%, #0066ff 100%);
+  }
+
+  .card-body { padding: 36px 32px 32px; }
+
+  /* avatar placeholder */
+  .avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--el-blue) 0%, #0066ff 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+
+  .role {
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .company {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    margin-bottom: 28px;
+  }
+  .company .e { color: var(--el-gray); font-weight: 500; }
+  .company .l { color: var(--el-blue); font-weight: 500; }
+
+  /* divider */
+  .divider {
+    height: 1px;
+    background: var(--off);
+    margin-bottom: 24px;
+  }
+
+  /* contacts */
+  .contacts { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--off);
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row:hover { color: var(--el-blue); }
+  .contact-row:hover .ci { background: var(--el-blue); border-color: var(--el-blue); }
+  .contact-row:hover .ci svg { stroke: #fff; }
+
+  .ci {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--lgray);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .ci svg { width: 14px; height: 14px; stroke: var(--gray); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.15s; }
+
+  .c-text { font-size: 14px; font-weight: 400; }
+  .c-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lgray); margin-bottom: 1px; }
+
+  /* CTA button */
+  .btn-save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    background: var(--el-blue);
+    color: #fff;
+    border: none;
+    border-radius: 1px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn-save:hover  { background: var(--el-blue2); }
+  .btn-save:active { transform: scale(0.98); }
+  .btn-save svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* footer */
+  .card-footer {
+    padding: 14px 32px;
+    background: var(--off);
+    border-top: 1px solid #e8e9ed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lgray); }
+  .footer-nfc {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lgray);
+  }
+  .nfc-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--el-blue);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* toast */
+  .toast {
+    position: fixed;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--ink);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 2px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @keyframes up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-wrap">
+  <div class="logo-text">
+    <span class="e">Essilor</span><span class="l">Luxottica</span>
+  </div>
+  <div class="logo-sub">Vision Care &amp; Eyewear</div>
+</div>
+
+<div class="card">
+  <div class="card-bar"></div>
+  <div class="card-body">
+
+    <div class="avatar">ВЛ</div>
+
+    <div class="name">Лопаткин Валентин</div>
+    <div class="role">Менеджер по развитию</div>
+    <div class="company"><span class="e">Essilor</span><span class="l">Luxottica</span> · Россия</div>
+
+    <div class="divider"></div>
+
+    <div class="contacts">
+      <a href="tel:+79181100680" class="contact-row">
+        <div class="ci">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div>
+          <div class="c-label">Телефон</div>
+          <div class="c-text">+7 918 110-06-80</div>
+        </div>
+      </a>
+
+      <a href="https://t.me/valentaym" class="contact-row">
+        <div class="ci">
+          <svg viewBox="0 0 24 24"><path d="M21.5 2L2 9.5l7 2.5M21.5 2L14 22l-5-7M21.5 2L9 12m0 0l5 10"/></svg>
+        </div>
+        <div>
+          <div class="c-label">Telegram</div>
+          <div class="c-text">@valentaym</div>
+        </div>
+      </a>
+    </div>
+
+    <a class="btn-save" href="#" onclick="downloadVCard(); return false;">
+      <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Сохранить контакт
+    </a>
+  </div>
+
+  <div class="card-footer">
+    <span class="footer-brand">EssilorLuxottica · RU</span>
+    <span class="footer-nfc"><div class="nfc-dot"></div>NFC</span>
+  </div>
+</div>
+
+<div class="toast" id="toast">Контакт сохранён ✓</div>
+
+<script>
+function downloadVCard() {
+  const vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "FN:Лопаткин Валентин Петрович",
+    "N:Лопаткин;Валентин;Петрович;;",
+    "ORG:EssilorLuxottica Russia",
+    "TITLE:Менеджер по развитию",
+    "TEL;TYPE=CELL:+79181100680",
+    "X-SOCIALPROFILE;type=telegram:https://t.me/valentaym",
+    "NOTE:NFC визитка · EssilorLuxottica",
+    "END:VCARD"
+  ].join("\r\n");
+
+  const blob = new Blob(["\uFEFF" + vcard], { type: "text/vcard;charset=utf-8" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = "Лопаткин_Валентин.vcf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  const t = document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
+}
+</script>
+</body>
+</html>
