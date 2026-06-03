@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Валентин Лопаткин · EssilorLuxottica</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--blue:#003DA5;--blue2:#0066ff;--gray:#706f6f;--ink:#10101e;--white:#fff;--off:#eef1f6;--lgray:#aeb4c2}
@@ -21,7 +21,7 @@
 
   /* hero */
   .avatar{width:96px;height:96px;border-radius:50%;margin-bottom:18px;overflow:hidden;border:3px solid rgba(90,140,255,.35);box-shadow:0 8px 28px rgba(0,61,165,.45);opacity:0;animation:pop .55s cubic-bezier(.2,.8,.3,1.2) .2s forwards}.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-  .name{font-family:'Playfair Display',serif;font-size:29px;font-weight:600;text-align:center;line-height:1.1;margin-bottom:8px;opacity:0;animation:up .6s ease .28s forwards}
+  .name{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.01em;text-align:center;line-height:1.1;margin-bottom:8px;opacity:0;animation:up .6s ease .28s forwards}
   .role{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lgray);text-align:center;margin-bottom:6px;font-weight:500;opacity:0;animation:up .6s ease .34s forwards}
   .company{font-size:12px;text-align:center;margin-bottom:26px;opacity:0;animation:up .6s ease .4s forwards}
   .company .e{color:#c8c8d4;font-weight:600}.company .l{color:#5a8cff;font-weight:600}
@@ -101,8 +101,8 @@
   <a class="mc" href="tel:+79181100680" aria-label="Позвонить">
     <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
   </a>
-  <a class="mc" href="https://t.me/valentaym" aria-label="Telegram">
-    <svg viewBox="0 0 24 24"><path d="M21.5 2L2 9.5l7 2.5M21.5 2L14 22l-5-7M21.5 2L9 12"/></svg>
+  <a class="mc" href="https://max.ru/u/f9LHodD0cOIm_NCU1grrjW2oqrh2NNjUmadmtj2Iqxy1-MArKSe2_JVSCU0" aria-label="MAX">
+    <svg viewBox="0 0 24 24"><path d="M4 20V4l8 9 8-9v16"/></svg>
   </a>
   <a class="mc" href="#" onclick="saveContact();return false;" aria-label="Сохранить контакт">
     <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
@@ -168,11 +168,32 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
 });
 
 function saveContact(){
-  const v=["BEGIN:VCARD","VERSION:3.0","FN:Лопаткин Валентин Петрович","N:Лопаткин;Валентин;Петрович;;","ORG:EssilorLuxottica Russia","TITLE:Менеджер по развитию","TEL;TYPE=CELL:+79181100680","X-SOCIALPROFILE;type=telegram:https://t.me/valentaym","NOTE:NFC визитка EssilorLuxottica","END:VCARD"].join("\r\n");
-  const blob=new Blob(["\uFEFF"+v],{type:"text/vcard;charset=utf-8"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");a.href=url;a.download="Лопаткин_Валентин.vcf";
-  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  const v=[
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Лопаткин;Валентин;Петрович;;",
+    "FN:Валентин Лопаткин",
+    "ORG:EssilorLuxottica Russia",
+    "TITLE:Эксперт по развитию оптического бизнеса",
+    "TEL;TYPE=CELL,VOICE:+79181100680",
+    "URL:https://max.ru/u/f9LHodD0cOIm_NCU1grrjW2oqrh2NNjUmadmtj2Iqxy1-MArKSe2_JVSCU0",
+    "END:VCARD"
+  ].join("\n");
+
+  const ua = navigator.userAgent || "";
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+
+  if(isIOS){
+    // iOS Safari: navigate to a data URI so the OS offers "Add Contact"
+    window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(v);
+  } else {
+    const blob=new Blob([v],{type:"text/vcard;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;a.download="Валентин_Лопаткин.vcf";
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+  }
 }
 </script>
 </body>
