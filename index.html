@@ -4,102 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Подбери линзы · EssilorLuxottica</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --blue:#003DA5; --blue2:#0066ff; --gray:#706f6f;
+    --blue:#003DA5; --blue2:#0066ff;
     --ink:#10101e; --white:#fff; --off:#eef1f6; --lgray:#aeb4c2;
   }
   html{height:100%}
   body{
     min-height:100%;
     background:radial-gradient(circle at 50% 0%, #1a2a5c 0%, #0a0f1f 55%, #05070f 100%);
-    font-family:'DM Sans',sans-serif;font-weight:300;color:#fff;
+    font-family:'Manrope',sans-serif;font-weight:300;color:#fff;
     -webkit-font-smoothing:antialiased;
     display:flex;flex-direction:column;align-items:center;
     padding:28px 18px 40px;overflow-x:hidden;
   }
 
-  /* logo */
-  .logo{font-weight:500;font-size:16px;letter-spacing:.03em;margin-bottom:4px;opacity:0;animation:fi .5s ease forwards}
+  .logo{font-weight:600;font-size:16px;letter-spacing:.02em;margin-bottom:4px;opacity:0;animation:fi .5s ease forwards}
   .logo .e{color:#c8c8d4}.logo .l{color:#5a8cff}
-  .logo-sub{font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--lgray);opacity:.6;margin-bottom:26px;animation:fi .5s ease .1s forwards;opacity:0}
+  .logo-sub{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--lgray);opacity:.55;margin-bottom:26px;animation:fi .5s ease .1s forwards;opacity:0}
 
-  h1{font-family:'DM Serif Display',serif;font-size:27px;font-weight:400;text-align:center;line-height:1.15;margin-bottom:6px;opacity:0;animation:up .6s ease .15s forwards}
-  .sub{font-size:12px;color:var(--lgray);letter-spacing:.04em;text-align:center;margin-bottom:30px;opacity:0;animation:up .6s ease .25s forwards}
+  h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;text-align:center;line-height:1.12;margin-bottom:7px;opacity:0;animation:up .6s ease .15s forwards;letter-spacing:.01em}
+  .sub{font-size:12px;color:var(--lgray);letter-spacing:.03em;text-align:center;margin-bottom:30px;font-weight:400;opacity:0;animation:up .6s ease .25s forwards}
 
-  /* wheel */
-  .wheel-box{position:relative;width:300px;height:300px;margin-bottom:18px;opacity:0;animation:pop .6s cubic-bezier(.2,.8,.3,1.2) .3s forwards}
-  .pointer{
-    position:absolute;top:-6px;left:50%;transform:translateX(-50%);
-    width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;
-    border-top:24px solid #fff;z-index:5;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));
-  }
-  .wheel{
-    width:300px;height:300px;border-radius:50%;
-    transition:transform 5s cubic-bezier(.17,.67,.18,1);
-    box-shadow:0 0 0 8px rgba(255,255,255,.06),0 0 0 14px rgba(0,61,165,.25),0 24px 60px rgba(0,0,0,.5);
-  }
-  .hub{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:62px;height:62px;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #fff, #e6ebf5);
-    z-index:4;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 4px 14px rgba(0,0,0,.4);
-  }
-  .hub svg{width:30px;height:30px}
+  .wheel-box{position:relative;width:300px;height:300px;margin-bottom:22px;opacity:0;animation:pop .6s cubic-bezier(.2,.8,.3,1.2) .3s forwards}
+  .pointer{position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:22px solid #fff;z-index:5;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+  .wheel{width:300px;height:300px;border-radius:50%;transition:transform 5s cubic-bezier(.17,.67,.18,1);box-shadow:0 0 0 7px rgba(255,255,255,.05),0 0 0 12px rgba(0,61,165,.22),0 24px 60px rgba(0,0,0,.5)}
+  .hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #fff, #e6ebf5);z-index:4;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  .hub svg{width:26px;height:26px}
 
-  .spin-btn{
-    margin-top:6px;padding:16px 54px;border:none;border-radius:40px;
-    background:linear-gradient(135deg,var(--blue),var(--blue2));
-    color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
-    box-shadow:0 8px 24px rgba(0,61,165,.5);transition:transform .12s,box-shadow .12s;
-    opacity:0;animation:up .6s ease .4s forwards;
-  }
+  .spin-btn{margin-top:4px;padding:17px 50px;border:none;border-radius:40px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 24px rgba(0,61,165,.5);transition:transform .12s;opacity:0;animation:up .6s ease .4s forwards}
   .spin-btn:active{transform:scale(.96)}
   .spin-btn:disabled{opacity:.4;cursor:default;box-shadow:none}
 
-  /* result card */
-  .overlay{
-    position:fixed;inset:0;background:rgba(5,7,15,.82);backdrop-filter:blur(6px);
-    display:flex;align-items:center;justify-content:center;padding:24px;
-    opacity:0;pointer-events:none;transition:opacity .35s;z-index:10;
-  }
+  .overlay{position:fixed;inset:0;background:rgba(5,7,15,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;z-index:10}
   .overlay.show{opacity:1;pointer-events:auto}
-  .result{
-    width:100%;max-width:380px;background:#fff;color:var(--ink);border-radius:6px;overflow:hidden;
-    transform:translateY(30px) scale(.96);transition:transform .4s cubic-bezier(.2,.8,.3,1.2);
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
-  }
+  .result{width:100%;max-width:380px;background:#fff;color:var(--ink);border-radius:6px;overflow:hidden;transform:translateY(30px) scale(.96);transition:transform .4s cubic-bezier(.2,.8,.3,1.2);box-shadow:0 30px 80px rgba(0,0,0,.6)}
   .overlay.show .result{transform:translateY(0) scale(1)}
   .r-bar{height:5px;background:linear-gradient(90deg,var(--blue),#0066ff)}
-  .r-body{padding:30px 28px 26px;text-align:center}
-  .r-emoji{font-size:46px;margin-bottom:10px;line-height:1}
-  .r-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:8px}
-  .r-name{font-family:'DM Serif Display',serif;font-size:25px;color:var(--ink);margin-bottom:10px;line-height:1.1}
-  .r-desc{font-size:13.5px;color:#555;line-height:1.5;font-weight:400;margin-bottom:24px}
+  .r-body{padding:32px 28px 26px;text-align:center}
+  .r-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:12px}
+  .r-name{font-family:'Playfair Display',serif;font-size:27px;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.08}
+  .r-desc{font-size:13.5px;color:#555;line-height:1.55;font-weight:400;margin-bottom:24px}
   .r-divider{height:1px;background:var(--off);margin:0 0 20px}
-
-  .r-contact-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--lgray);margin-bottom:14px}
+  .r-contact-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--lgray);margin-bottom:14px;font-weight:500}
   .r-actions{display:flex;flex-direction:column;gap:10px}
-  .r-btn{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    padding:14px;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
-    letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;
-    transition:opacity .15s,transform .1s;
-  }
+  .r-btn{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:3px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:transform .1s}
   .r-btn:active{transform:scale(.98)}
   .r-btn.primary{background:var(--blue);color:#fff}
   .r-btn.tg{background:#229ED9;color:#fff}
   .r-btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--off)}
   .r-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .r-btn.primary svg{fill:none;stroke:#fff}
+  .r-again{margin-top:18px;background:none;border:none;color:var(--lgray);font-size:11px;letter-spacing:.06em;text-decoration:underline;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:500}
 
-  .r-again{margin-top:18px;background:none;border:none;color:var(--lgray);font-size:11px;letter-spacing:.08em;text-decoration:underline;cursor:pointer;font-family:'DM Sans',sans-serif}
-
-  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:3px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:0;pointer-events:none;transition:all .25s;z-index:20}
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:3px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:20}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
   @keyframes fi{to{opacity:1}}
@@ -114,29 +73,27 @@
 <div class="logo-sub">Lens Technology</div>
 
 <h1 class="up-init">Подбери свои линзы</h1>
-<div class="sub up-init">Крути колесо — узнай, что подойдёт именно тебе</div>
+<div class="sub up-init">Крути барабан — узнай, что подойдёт именно тебе</div>
 
 <div class="wheel-box">
   <div class="pointer"></div>
   <canvas class="wheel" id="wheel" width="600" height="600"></canvas>
   <div class="hub">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#003DA5" stroke-width="1.6"><circle cx="12" cy="12" r="3.2"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#003DA5" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>
   </div>
 </div>
 
-<button class="spin-btn" id="spinBtn">Крутить</button>
+<button class="spin-btn" id="spinBtn">Крутить барабан</button>
 
-<!-- result overlay -->
 <div class="overlay" id="overlay">
   <div class="result">
     <div class="r-bar"></div>
     <div class="r-body">
-      <div class="r-emoji" id="rEmoji">👓</div>
-      <div class="r-tag" id="rTag">Твой результат</div>
+      <div class="r-tag">Твой результат</div>
       <div class="r-name" id="rName"></div>
       <div class="r-desc" id="rDesc"></div>
       <div class="r-divider"></div>
-      <div class="r-contact-label">Хочешь подобрать вживую? Свяжись со мной</div>
+      <div class="r-contact-label">Подобрать вживую? Свяжись со мной</div>
       <div class="r-actions">
         <button class="r-btn primary" onclick="saveContact()">
           <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
@@ -156,104 +113,79 @@
   </div>
 </div>
 
-<div class="toast" id="toast">Контакт сохранён ✓</div>
+<div class="toast" id="toast">Контакт сохранён</div>
 
 <script>
-const segments = [
-  { name:"Crizal Sapphire",  emoji:"💎", desc:"Максимальная прозрачность и защита от бликов. Линзы, которых почти не видно — только чёткое зрение.", color:"#003DA5" },
-  { name:"Eyezen",            emoji:"📱", desc:"Для жизни в гаджетах. Снижают усталость глаз от экранов и фильтруют синий свет.", color:"#0066ff" },
-  { name:"Transitions",       emoji:"🌗", desc:"Фотохромные: тёмные на солнце, прозрачные в помещении. Одни очки на все случаи.", color:"#1a3a7a" },
-  { name:"Varilux",           emoji:"👁️", desc:"Прогрессивные линзы премиум-класса. Чёткое зрение на всех расстояниях без видимых границ.", color:"#0052cc" },
-  { name:"Stellest",          emoji:"🧒", desc:"Контроль миопии у детей. Замедляет прогрессирование близорукости — научно доказано.", color:"#002b75" },
-  { name:"Xperio",            emoji:"🕶️", desc:"Поляризационные солнцезащитные. Убирают блики от воды, дороги и снега. Для активных.", color:"#0066ff" },
+const segments=[
+  {name:"Crizal Sapphire",desc:"Максимальная прозрачность и защита от бликов. Линзы, которых почти не видно — только чёткое зрение.",color:"#003DA5"},
+  {name:"Eyezen",desc:"Для жизни в гаджетах. Снижают усталость глаз от экранов и фильтруют синий свет.",color:"#0066ff"},
+  {name:"Transitions",desc:"Фотохромные: тёмные на солнце, прозрачные в помещении. Одни очки на все случаи.",color:"#1a3a7a"},
+  {name:"Varilux",desc:"Прогрессивные линзы премиум-класса. Чёткое зрение на всех расстояниях без видимых границ.",color:"#0052cc"},
+  {name:"Stellest",desc:"Контроль миопии у детей. Замедляет прогрессирование близорукости — научно доказано.",color:"#002b75"},
+  {name:"Xperio",desc:"Поляризационные солнцезащитные. Убирают блики от воды, дороги и снега. Для активных.",color:"#0066ff"},
 ];
 
-const canvas = document.getElementById('wheel');
-const ctx = canvas.getContext('2d');
-const N = segments.length;
-const arc = (2*Math.PI)/N;
-const R = 300;
+const canvas=document.getElementById('wheel');
+const ctx=canvas.getContext('2d');
+const N=segments.length, arc=(2*Math.PI)/N, R=300;
 
 function drawWheel(){
   ctx.clearRect(0,0,600,600);
   for(let i=0;i<N;i++){
-    const start = i*arc - Math.PI/2;
-    ctx.beginPath();
-    ctx.moveTo(R,R);
-    ctx.arc(R,R,R-4,start,start+arc);
-    ctx.closePath();
-    ctx.fillStyle = i%2===0 ? segments[i].color : shade(segments[i].color);
-    ctx.fill();
-    // text
+    const start=i*arc-Math.PI/2;
+    ctx.beginPath();ctx.moveTo(R,R);ctx.arc(R,R,R-4,start,start+arc);ctx.closePath();
+    ctx.fillStyle=i%2===0?segments[i].color:shade(segments[i].color);ctx.fill();
+    // separator line
+    ctx.strokeStyle="rgba(255,255,255,.08)";ctx.lineWidth=2;ctx.stroke();
+    // text — positioned near outer edge, upright-readable
     ctx.save();
     ctx.translate(R,R);
     ctx.rotate(start+arc/2);
     ctx.textAlign="right";
     ctx.fillStyle="#fff";
-    ctx.font="600 30px 'DM Sans', sans-serif";
-    ctx.fillText(segments[i].emoji+"  "+segments[i].name, R-34, 10);
+    ctx.font="700 28px 'Manrope', sans-serif";
+    ctx.fillText(segments[i].name, R-40, 9);
     ctx.restore();
   }
 }
-function shade(hex){
-  // slightly lighten
-  const n=parseInt(hex.slice(1),16);
-  let r=(n>>16)+24,g=((n>>8)&255)+24,b=(n&255)+24;
-  r=Math.min(255,r);g=Math.min(255,g);b=Math.min(255,b);
-  return `rgb(${r},${g},${b})`;
-}
+function shade(hex){const n=parseInt(hex.slice(1),16);let r=Math.min(255,(n>>16)+26),g=Math.min(255,((n>>8)&255)+26),b=Math.min(255,(n&255)+26);return`rgb(${r},${g},${b})`}
 drawWheel();
 
-let spinning=false, currentRot=0;
+let spinning=false,currentRot=0;
 const btn=document.getElementById('spinBtn');
-
 btn.addEventListener('click',()=>{
-  if(spinning) return;
-  spinning=true; btn.disabled=true;
-
-  const win = Math.floor(Math.random()*N);
-  // pointer is at top (-90deg). segment center angle:
-  const segCenter = win*arc + arc/2;        // from top, clockwise
-  const targetMod = (2*Math.PI - segCenter); // align center to top
-  const spins = 5 + Math.floor(Math.random()*2);
-  const finalRot = spins*2*Math.PI + targetMod;
-  currentRot = finalRot;
-
-  canvas.style.transform = `rotate(${finalRot}rad)`;
-
-  setTimeout(()=>showResult(win), 5100);
+  if(spinning)return;spinning=true;btn.disabled=true;
+  const win=Math.floor(Math.random()*N);
+  const segCenter=win*arc+arc/2;
+  const targetMod=(2*Math.PI-segCenter);
+  const spins=5+Math.floor(Math.random()*2);
+  const finalRot=spins*2*Math.PI+targetMod;
+  currentRot=finalRot;
+  canvas.style.transform=`rotate(${finalRot}rad)`;
+  setTimeout(()=>showResult(win),5100);
 });
-
 function showResult(i){
-  const s = segments[i];
-  document.getElementById('rEmoji').textContent = s.emoji;
-  document.getElementById('rName').textContent  = s.name;
-  document.getElementById('rDesc').textContent  = s.desc;
+  document.getElementById('rName').textContent=segments[i].name;
+  document.getElementById('rDesc').textContent=segments[i].desc;
   document.getElementById('overlay').classList.add('show');
 }
-
 function resetWheel(){
   document.getElementById('overlay').classList.remove('show');
-  spinning=false; btn.disabled=false;
-  // keep wheel where it landed; next spin adds on top
+  spinning=false;btn.disabled=false;
   canvas.style.transition='none';
-  const norm = currentRot % (2*Math.PI);
+  const norm=currentRot%(2*Math.PI);
   canvas.style.transform=`rotate(${norm}rad)`;
   void canvas.offsetWidth;
   canvas.style.transition='transform 5s cubic-bezier(.17,.67,.18,1)';
-  currentRot = norm;
+  currentRot=norm;
 }
-
 function saveContact(){
   const v=["BEGIN:VCARD","VERSION:3.0","FN:Лопаткин Валентин Петрович","N:Лопаткин;Валентин;Петрович;;","ORG:EssilorLuxottica Russia","TITLE:Менеджер по развитию","TEL;TYPE=CELL:+79181100680","X-SOCIALPROFILE;type=telegram:https://t.me/valentaym","NOTE:NFC визитка EssilorLuxottica","END:VCARD"].join("\r\n");
   const blob=new Blob(["\uFEFF"+v],{type:"text/vcard;charset=utf-8"});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;a.download="Лопаткин_Валентин.vcf";
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  const t=document.getElementById("toast");t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),2500);
+  const a=document.createElement("a");a.href=url;a.download="Лопаткин_Валентин.vcf";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  const t=document.getElementById("toast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500);
 }
 </script>
 </body>
